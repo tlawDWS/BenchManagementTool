@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<BorderPane fx:controller="BenchManagementTool.BenchManagementToolController" xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx/2.2">
+    <top>
+        <HBox>
+            <Button onAction="#goHome" text="Home" />
+            <Button onAction="#sayHelloWorld" text="Say 'Hello World'" />
+        </HBox>
+    </top>
+    <center>
+      <HBox>
+            <Label fx:id="lblEmployeeHeading" />
+            <Label fx:id="lblBenchHours"/>
+            <Label fx:id="lblBenchActivity"/>
+      </HBox>
+    </center>
+    <bottom>
+        <Label fx:id="helloWorld" />
+    </bottom>
+</BorderPane>
+<!--<GridPane fx:controller="BenchManagementTool.BenchManagementToolController" xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">-->
+
+<!--</GridPane>-->
