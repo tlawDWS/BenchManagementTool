@@ -9,24 +9,26 @@
 <?import javafx.scene.control.*?>
 
 <BorderPane fx:controller="BenchManagementTool.BenchManagementToolController" xmlns:fx="http://javafx.com/fxml/1"
-            xmlns="http://javafx.com/javafx/2.2">
+            xmlns="http://javafx.com/javafx/2.2" stylesheets="/BenchManagementTool/BenchManagementTool.css">
     <top>
         <HBox>
             <Button onAction="#goHome" text="Home" />
+            <Button onAction="#goHome" text="Employees" />
+            <Button onAction="#goHome" text="Tasks" />
+            <Button onAction="#goHome" text="???" />
             <Button onAction="#sayHelloWorld" text="Say 'Hello World'" />
         </HBox>
     </top>
     <center>
       <HBox>
-            <Label fx:id="lblEmployeeHeading" />
-            <Label fx:id="lblBenchHours"/>
-            <Label fx:id="lblBenchActivity"/>
+          <GridPane fx:id="gpBenchRecords">
+              <Label fx:id="lblEmployeeHeading" GridPane.columnIndex="0" text="Employee" styleClass="header" />
+              <Label fx:id="lblBenchHours" GridPane.columnIndex="1" text="Bench Hours" styleClass="header"/>
+              <Label fx:id="lblBenchActivity" GridPane.columnIndex="2" text="Bench Activity" styleClass="header"/>
+          </GridPane>
       </HBox>
     </center>
     <bottom>
         <Label fx:id="helloWorld" />
     </bottom>
 </BorderPane>
-<!--<GridPane fx:controller="BenchManagementTool.BenchManagementToolController" xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">-->
-
-<!--</GridPane>-->

@@ -6,8 +6,9 @@ public class Employee {
     private String lastName;
     private String branch;
 
-    public Employee(String firstName, String lastName, String branch)
+    public Employee(int id, String firstName, String lastName, String branch)
     {
+        setEmployeeID(id);
         setFirstName(firstName);
         setLastName(lastName);
         setBranch(branch);
@@ -16,6 +17,10 @@ public class Employee {
     public int getEmployeeID()
     {
         return this.employeeID;
+    }
+
+    public void setEmployeeID(int value) {
+        this.employeeID = value;
     }
 
     public String getFirstName()

@@ -56,4 +56,12 @@ public class BenchRecord {
     {
         this.benchActivity = value;
     }
+
+    public String getEmployeeName(int id){
+        Employee e = new Employee(1, "Tony", "Law", "Sydney");
+        if (id == e.getEmployeeID())
+            return e.getFirstName() + " " + e.getLastName();
+        else
+            return "John Doe";
+    }
 }
