@@ -13,10 +13,10 @@
     <top>
         <HBox>
             <Button onAction="#goHome" text="Home" />
-            <Button onAction="#goHome" text="Employees" />
+            <Button onAction="#goToEmployees" text="Employees" />
             <Button onAction="#goHome" text="Tasks" />
             <Button onAction="#goHome" text="???" />
-            <Button onAction="#sayHelloWorld" text="Say 'Hello World'" />
+            <Button onAction="#sayHelloWorld" text="Say 'Hello World' why" />
         </HBox>
     </top>
     <center>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<BorderPane fx:controller="BenchManagementTool.EmployeeController" xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx/2.2" stylesheets="/BenchManagementTool/BenchManagementTool.css">
+    <top>
+        <HBox>
+            <Button onAction="#goHome" text="Home" />
+            <Button onAction="#goHome" text="Employees" />
+            <Button onAction="#goHome" text="Tasks" />
+            <Button onAction="#goHome" text="???" />
+        </HBox>
+    </top>
+    <center>
+        <HBox>
+            <Label>hi</Label>
+        </HBox>
+    </center>
+    <bottom>
+        <VBox>
+            <Label>ugh</Label>
+        </VBox>
+    </bottom>
+</BorderPane>
