@@ -33,10 +33,6 @@ public class BenchManagementToolController implements Initializable {
     public Label lblEmployeeHeading3;
     public Label lblEmployeeHeading4;
 
-    public void goHome(ActionEvent actionEvent) {
-        helloWorld.setText("Let's go home!");
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
@@ -73,8 +69,10 @@ public class BenchManagementToolController implements Initializable {
         }
     }
 
-    public void sayHelloWorld(ActionEvent actionEvent)  {
 
+    public void sayHelloWorld(ActionEvent actionEvent) throws ParseException
+    {
+        helloWorld.setText("Let's go home!");
     }
 
     private void initialiseHeadingText() {
@@ -91,4 +89,18 @@ public class BenchManagementToolController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
+    public void goHome(ActionEvent actionEvent) {
+        helloWorld.setText("Let's go home!");
+    }
+
+    public void goToEmployees(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage)gpBenchRecords.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("Employee.fxml"));
+        stage.setTitle("lolz");
+        stage.setScene(new Scene(root, 700, 600));
+        stage.show();
+    }
+
+
 }

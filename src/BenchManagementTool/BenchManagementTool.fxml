@@ -14,9 +14,10 @@
         <HBox>
             <Button onAction="#goHome" text="Home" />
             <Button onAction="#openEmployees" text="Employees" />
+            <Button onAction="#goToEmployees" text="EmployeesTWO" />
             <Button onAction="#goHome" text="Tasks" />
             <Button onAction="#goHome" text="???" />
-            <Button onAction="#sayHelloWorld" text="Say 'Hello World'" />
+            <Button onAction="#sayHelloWorld" text="Say 'Hello World' why" />
         </HBox>
     </top>
     <center>
