@@ -1,6 +1,8 @@
 package BenchManagementTool;
 
 import Constants.*;
+import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import Models.BenchRecord;
@@ -61,6 +63,9 @@ public class BenchManagementToolController implements Initializable {
 
                 labels.add(new Label(brL.get(i).getBenchActivity()));
                 gpBenchRecords.add(labels.get(labels.size() - 1), 2, i + 1);
+
+                labels.add(new Label(String.valueOf(brL.get(i).getRecordDate())));
+                gpBenchRecords.add(labels.get(labels.size() - 1), 3, i + 1);
             }
         }
         catch (ParseException e)
@@ -81,26 +86,33 @@ public class BenchManagementToolController implements Initializable {
         lblBenchActivity.setText("Bench Activity");
     }
 
-    public void openEmployees(ActionEvent actionEvent) throws IOException {
-        Node node = (Node) actionEvent.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
+    public void goToEmployees(ActionEvent actionEvent) throws IOException {
+        //Node node = (Node) actionEvent.getSource();
+        //Stage stage = (Stage) node.getScene().getWindow();
+        Stage stage = (Stage)gpBenchRecords.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("Employee.fxml"));
         Scene scene = new Scene(root, Constants.SCENE_WIDTH, Constants.SCENE_HEIGHT);
         stage.setScene(scene);
-        stage.show();
+        //stage.show();
     }
 
     public void goHome(ActionEvent actionEvent) {
         helloWorld.setText("Let's go home!");
     }
 
-    public void goToEmployees(ActionEvent actionEvent) throws IOException {
-        Stage stage = (Stage)gpBenchRecords.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("Employee.fxml"));
-        stage.setTitle("lolz");
-        stage.setScene(new Scene(root, 700, 600));
-        stage.show();
+//    public void goToEmployees(ActionEvent actionEvent) throws IOException {
+//        Stage stage = (Stage)gpBenchRecords.getScene().getWindow();
+//        Parent root = FXMLLoader.load(getClass().getResource("Employee.fxml"));
+//        stage.setTitle("lolz");
+//        stage.setScene(new Scene(root, 700, 600));
+//        stage.show();
+//    }
+
+
+    public void goToAddBenchRecord(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) gpBenchRecords.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("AddBenchRecord.fxml"));
+        stage.setTitle("Add Bench Record");
+        stage.setScene(new Scene(root, Constants.SCENE_WIDTH, Constants.SCENE_HEIGHT));
     }
-
-
 }

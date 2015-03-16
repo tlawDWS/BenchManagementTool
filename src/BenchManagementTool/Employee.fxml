@@ -12,10 +12,10 @@
             xmlns="http://javafx.com/javafx/2.2" stylesheets="/BenchManagementTool/BenchManagementTool.css">
     <top>
         <HBox>
-            <Button onAction="#goHome" text="Home" />
-            <Button onAction="#goHome" text="Employees" />
-            <Button onAction="#goHome" text="Tasks" />
-            <Button onAction="#goHome" text="???" />
+            <Hyperlink onAction="#goHome" text="Home" />
+            <Hyperlink text="Employees"/>
+            <Hyperlink onAction="#goHome" text="Tasks" />
+            <Hyperlink onAction="#goHome" text="???" />
         </HBox>
     </top>
     <center>

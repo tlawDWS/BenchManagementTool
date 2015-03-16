@@ -5,14 +5,14 @@ import java.util.Date;
 public class BenchRecord {
     private int benchRecordID;
     private int employeeID;
-    private Date currentDate;
+    private Date recordDate;
     private int benchHours;
     private String benchActivity;
 
-    public BenchRecord(int employeeID, Date currentDate, int benchHours, String benchActivity)
+    public BenchRecord(int employeeID, Date recordDate, int benchHours, String benchActivity)
     {
         setEmployeeID(employeeID);
-        setCurrentDate(currentDate);
+        setRecordDate(recordDate);
         setBenchHours(benchHours);
         setBenchActivity(benchActivity);
     }
@@ -27,14 +27,14 @@ public class BenchRecord {
         this.employeeID = value;
     }
 
-    public Date getCurrentDate()
+    public Date getRecordDate()
     {
-        return this.currentDate;
+        return this.recordDate;
     }
 
-    public void setCurrentDate(Date value)
+    public void setRecordDate(Date value)
     {
-        this.currentDate = value;
+        this.recordDate = value;
     }
 
     public int getBenchHours()

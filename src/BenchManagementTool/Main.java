@@ -17,14 +17,9 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     private Scene mainScene;
-    private Scene employeeScene;
-    private Stage stage;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        this.stage = primaryStage;
-        //employeeScene = createEmployeeScene();
-
         Parent root = FXMLLoader.load(getClass().getResource("BenchManagementTool.fxml"));
         mainScene = new Scene(root, Constants.SCENE_WIDTH, Constants.SCENE_HEIGHT);
 

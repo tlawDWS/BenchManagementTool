@@ -12,22 +12,25 @@
             xmlns="http://javafx.com/javafx/2.2" stylesheets="/BenchManagementTool/BenchManagementTool.css">
     <top>
         <HBox>
-            <Button onAction="#goHome" text="Home" />
-            <Button onAction="#openEmployees" text="Employees" />
-            <Button onAction="#goToEmployees" text="EmployeesTWO" />
-            <Button onAction="#goHome" text="Tasks" />
-            <Button onAction="#goHome" text="???" />
-            <Button onAction="#sayHelloWorld" text="Say 'Hello World' why" />
+            <Hyperlink onAction="#goHome" text="Home" />
+            <Hyperlink onAction="#goToEmployees" text="Employees"/>
+            <Hyperlink onAction="#goHome" text="Tasks" />
+            <Hyperlink onAction="#goHome" text="???" />
+            <Hyperlink onAction="#sayHelloWorld" text="Say 'Hello World'" />
         </HBox>
     </top>
     <center>
-      <HBox>
+      <VBox>
           <GridPane fx:id="gpBenchRecords">
               <Label fx:id="lblEmployeeHeading" GridPane.columnIndex="0" text="Employee" styleClass="header" />
               <Label fx:id="lblBenchHours" GridPane.columnIndex="1" text="Bench Hours" styleClass="header"/>
               <Label fx:id="lblBenchActivity" GridPane.columnIndex="2" text="Bench Activity" styleClass="header"/>
+              <Label fx:id="lblRecordDate" GridPane.columnIndex="3" text="Date" styleClass="header"/>
           </GridPane>
-      </HBox>
+          <GridPane fx:id="gpMainMore">
+              <Button onAction="#goToAddBenchRecord" fx:id="btnAddRecord" text="Add" GridPane.columnIndex="0" />
+          </GridPane>
+      </VBox>
     </center>
     <bottom>
         <Label fx:id="helloWorld" />

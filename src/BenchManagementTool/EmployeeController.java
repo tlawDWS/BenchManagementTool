@@ -13,7 +13,6 @@ import Constants.Constants;
 import java.io.IOException;
 
 /**
-<<<<<<< HEAD
  * Created by tlaw on 12/03/2015.
  */
 public class EmployeeController {
@@ -23,7 +22,6 @@ public class EmployeeController {
         Parent root = FXMLLoader.load(getClass().getResource("BenchManagementTool.fxml"));
         Scene scene = new Scene(root, Constants.SCENE_WIDTH, Constants.SCENE_HEIGHT);
         stage.setScene(scene);
-        stage.show();
-
+        //stage.show();
     }
 }
