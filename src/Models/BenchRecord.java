@@ -9,11 +9,11 @@ public class BenchRecord {
     private int benchHours;
     private String benchActivity;
 
-    public BenchRecord(int employeeID, Date recordDate, int benchHours, String benchActivity)
+    public BenchRecord(int employeeID, Date recordDate, String benchActivity)
     {
         setEmployeeID(employeeID);
         setRecordDate(recordDate);
-        setBenchHours(benchHours);
+        //setBenchHours(benchHours);
         setBenchActivity(benchActivity);
     }
 

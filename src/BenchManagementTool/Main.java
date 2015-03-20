@@ -14,6 +14,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+
 public class Main extends Application {
 
     private Scene mainScene;

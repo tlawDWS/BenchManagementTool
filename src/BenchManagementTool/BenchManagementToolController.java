@@ -19,11 +19,15 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import DAL.DBConnection;
+
+import javax.swing.plaf.nimbus.State;
 
 public class BenchManagementToolController implements Initializable {
     public Label helloWorld;
@@ -38,24 +42,38 @@ public class BenchManagementToolController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        loadBenchRecordsForDisplay();
+        try {
+            loadBenchRecordsForDisplay();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
-    private void loadBenchRecordsForDisplay() {
+    private void loadBenchRecordsForDisplay() throws SQLException, ClassNotFoundException {
+
+        ResultSet set;
+        Connection conn;
+
+        List<BenchRecord> brL = new ArrayList<BenchRecord>();
+        List<Label> labels = new ArrayList<Label>();
+
         try {
-            List<BenchRecord> brL = new ArrayList<BenchRecord>();
-            List<Label> labels = new ArrayList<Label>();
-            Employee e = new Employee(1, "Tony", "Law", "Sydney");
-            BenchRecord br = new BenchRecord(1, (new SimpleDateFormat("yyyyMMdd")).parse("20150302"), 8, "Browsed the web lulz");
-            brL.add(br);
-            BenchRecord br2 = new BenchRecord(1, (new SimpleDateFormat("yyyyMMdd")).parse("20150303"), 8, "More browsing");
-            brL.add(br2);
-            BenchRecord br3 = new BenchRecord(1, (new SimpleDateFormat("yyyyMMdd")).parse("20150303"), 8, "Read some books");
-            brL.add(br3);
+            brL = DBConnection.getBenchRecords();
+
+
+//            Employee e = new Employee(1, "Tony", "Law", "Sydney");
+//            BenchRecord br = new BenchRecord(1, (new SimpleDateFormat("yyyyMMdd")).parse("20150302"), 8, "Browsed the web lulz");
+//            brL.add(br);
+//            BenchRecord br2 = new BenchRecord(1, (new SimpleDateFormat("yyyyMMdd")).parse("20150303"), 8, "More browsing");
+//            brL.add(br2);
+//            BenchRecord br3 = new BenchRecord(1, (new SimpleDateFormat("yyyyMMdd")).parse("20150303"), 8, "Read some books");
+//            brL.add(br3);
 
             for (int i = 0; i < brL.size(); i++)
             {
-                labels.add(new Label(brL.get(i).getEmployeeName(br.getEmployeeID())));
+                labels.add(new Label(brL.get(i).getEmployeeName(brL.get(i).getEmployeeID())));
                 gpBenchRecords.add(labels.get(labels.size() - 1), 0, i + 1);
 
                 labels.add(new Label(String.valueOf(brL.get(i).getBenchHours())));
@@ -68,16 +86,17 @@ public class BenchManagementToolController implements Initializable {
                 gpBenchRecords.add(labels.get(labels.size() - 1), 3, i + 1);
             }
         }
-        catch (ParseException e)
-        {
+
+        finally {
 
         }
     }
 
 
-    public void sayHelloWorld(ActionEvent actionEvent) throws ParseException
-    {
+    public void sayHelloWorld(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        DBConnection.openConnection();
         helloWorld.setText("Let's go home!");
+        DBConnection.closeConnection();
     }
 
     private void initialiseHeadingText() {
