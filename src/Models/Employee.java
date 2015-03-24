@@ -4,14 +4,25 @@ public class Employee {
     private int employeeID;
     private String firstName;
     private String lastName;
+    private String email;
     private String branch;
 
-    public Employee(int id, String firstName, String lastName, String branch)
+    public Employee(int id, String firstName, String lastName, String branch, String email)
     {
         setEmployeeID(id);
         setFirstName(firstName);
         setLastName(lastName);
         setBranch(branch);
+        setEmail(email);
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public void setEmail(String value)
+    {
+        this.email = value;
     }
 
     public int getEmployeeID()

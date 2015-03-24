@@ -1,33 +1,23 @@
 package BenchManagementTool;
 
 import Constants.*;
-import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import Models.BenchRecord;
-import Models.Employee;
 import javafx.event.ActionEvent;
-import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import DAL.DBConnection;
-
-import javax.swing.plaf.nimbus.State;
+import DAL.DatabaseOperations;
 
 public class BenchManagementToolController implements Initializable {
     public Label helloWorld;
@@ -60,8 +50,7 @@ public class BenchManagementToolController implements Initializable {
         List<Label> labels = new ArrayList<Label>();
 
         try {
-            brL = DBConnection.getBenchRecords();
-
+            brL = DatabaseOperations.getBenchRecords();
 
 //            Employee e = new Employee(1, "Tony", "Law", "Sydney");
 //            BenchRecord br = new BenchRecord(1, (new SimpleDateFormat("yyyyMMdd")).parse("20150302"), 8, "Browsed the web lulz");
@@ -94,9 +83,9 @@ public class BenchManagementToolController implements Initializable {
 
 
     public void sayHelloWorld(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        DBConnection.openConnection();
+        DatabaseOperations.openConnection();
         helloWorld.setText("Let's go home!");
-        DBConnection.closeConnection();
+        DatabaseOperations.closeConnection();
     }
 
     private void initialiseHeadingText() {

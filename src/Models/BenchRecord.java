@@ -1,5 +1,6 @@
 package Models;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class BenchRecord {
@@ -32,6 +33,13 @@ public class BenchRecord {
         return this.recordDate;
     }
 
+    public String getFormattedRecordDate()
+    {
+        SimpleDateFormat formattedDate = new SimpleDateFormat("yyyy-MM-dd");
+
+        return formattedDate.format(getRecordDate());
+    }
+
     public void setRecordDate(Date value)
     {
         this.recordDate = value;
@@ -58,7 +66,7 @@ public class BenchRecord {
     }
 
     public String getEmployeeName(int id){
-        Employee e = new Employee(1, "Tony", "Law", "Sydney");
+        Employee e = new Employee(1, "Tony", "Law", "Sydney", "blah@blah.com");
         if (id == e.getEmployeeID())
             return e.getFirstName() + " " + e.getLastName();
         else

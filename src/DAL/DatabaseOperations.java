@@ -1,8 +1,10 @@
 package DAL;
 
 import Models.BenchRecord;
+import Models.Employee;
 
 import javax.swing.plaf.nimbus.State;
+import javax.xml.transform.Result;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +12,7 @@ import java.util.List;
 /**
  * Created by tlaw on 20/03/2015.
  */
-public final class DBConnection {
+public final class DatabaseOperations {
 
     public static Connection conn;
 
@@ -79,17 +81,55 @@ public final class DBConnection {
         return brL;
     }
 
-    //public static void addBenchRecord(BenchRecord br) {
-    public static void addBenchRecord() {
+    public static List<Employee> getEmployees() throws SQLException, ClassNotFoundException {
+        List<Employee> emp = new ArrayList<Employee>();
         Statement stmt = null;
-        String sql = "INSERT INTO BENCHRECORD(EMPLOYEEID, DAILYSUMMARY, BENCHRECORDDATE) VALUES(2, 'OH HAI', '2015-03-01')";
+        String sql = "SELECT * FROM EMPLOYEE";
+        String firstName, lastName, email, branch;
+        Boolean hasLeftCompany;
+        ResultSet set;
+        int id;
 
+        try
+        {
+            conn = openConnection();
+
+            stmt = conn.createStatement();
+            set = stmt.executeQuery(sql);
+
+            while (set.next()) {
+                id = set.getInt("ID");
+                firstName = set.getString("FIRSTNAME");
+                lastName = set.getString("LASTNAME");
+                email = set.getString("EMAIL");
+                branch = set.getString("BRANCH");
+                hasLeftCompany = set.getBoolean("HASLEFTCOMPANY");
+                emp.add(new Employee(id, firstName, lastName, branch, email));
+            }
+        }
+        finally {
+            closeConnection();
+        }
+
+        return emp;
+    }
+
+    public static void addBenchRecord(BenchRecord br) {
+    //public static void addBenchRecord() {
+        PreparedStatement stmt = null;
+//        String sql = "INSERT INTO BENCHRECORD(EMPLOYEEID, DAILYSUMMARY, BENCHRECORDDATE) VALUES(" +
+//                br.getEmployeeID() + " , '" + br.getBenchActivity() + "', '" + br.getFormattedRecordDate() + "')";
+
+        String sql = "INSERT INTO BENCHRECORD(EMPLOYEEID, DAILYSUMMARY, BENCHRECORDDATE) VALUES(?, ?, ?)";
         try {
             try {
                 conn = openConnection();
-                stmt = conn.createStatement();
-                stmt.execute(sql);
-
+                stmt = conn.prepareStatement(sql);
+                stmt.setInt(1, br.getEmployeeID());
+                stmt.setString(2, br.getBenchActivity());
+                stmt.setString(3, br.getFormattedRecordDate());
+                //stmt.execute(sql);
+                stmt.executeUpdate();
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             } catch (SQLException e) {
@@ -104,4 +144,5 @@ public final class DBConnection {
             }
         }
     }
+
 }

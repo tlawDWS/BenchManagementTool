@@ -19,9 +19,17 @@
         </HBox>
     </top>
     <center>
-        <HBox>
-            <Label>hi</Label>
-        </HBox>
+        <VBox>
+            <GridPane fx:id="gpEmployeeHeading">
+                <Label fx:id="lblFirstName" GridPane.columnIndex="0" text="First Name" styleClass="header" />
+                <Label fx:id="lblLastName" GridPane.columnIndex="1" text="Last Name" styleClass="header"/>
+                <Label fx:id="lblBranch" GridPane.columnIndex="2" text="Branch" styleClass="header"/>
+                <Label fx:id="lblEmail" GridPane.columnIndex="3" text="Email" styleClass="header"/>
+            </GridPane>
+            <GridPane fx:id="gpEmployees">
+                <Button onAction="#goToAddEmployee" fx:id="btnAddEmployee" text="Add" GridPane.columnIndex="0" />
+            </GridPane>
+        </VBox>
     </center>
     <bottom>
         <VBox>

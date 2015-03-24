@@ -5,22 +5,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane stylesheets="/BenchManagementTool/BenchManagementTool.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="BenchManagementTool.AddBenchRecordController">
+<BorderPane stylesheets="/BenchManagementTool/BenchManagementTool.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="BenchManagementTool.AddEmployeeController">
   <center>
       <VBox>
           <HBox>
               <Label text="Employee"/>
-              <ComboBox fx:id="cbEmployees" ></ComboBox>
               <Button fx:id="btnAddEmployee" text="Add new employee"></Button>
           </HBox>
-          <!--<HBox>-->
-              <!--<Label text="First name"/>-->
-              <!--<TextField fx:id="txtFirstName"/>-->
-          <!--</HBox>-->
-          <!--<HBox>-->
-              <!--<Label text="Last name"/>-->
-              <!--<TextField fx:id="txtLastName"/>-->
-          <!--</HBox>-->
           <HBox>
               <Label text="Bench activity"/>
               <TextField fx:id="txtBenchActivity"/>
@@ -30,7 +21,7 @@
               <DatePicker fx:id="dateOnBench"></DatePicker>
           </HBox>
           <HBox>
-              <Button mnemonicParsing="false" text="Add record" onAction="#addBenchRecord" />
+              <Button mnemonicParsing="false" text="Add record" onAction="#addEmployeeRecord" />
               <Button mnemonicParsing="false" text="Cancel" onAction="#goHome" />
           </HBox>
       </VBox>
