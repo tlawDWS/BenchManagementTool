@@ -9,20 +9,24 @@
   <center>
       <VBox>
           <HBox>
-              <Label text="Employee"/>
-              <Button fx:id="btnAddEmployee" text="Add new employee"></Button>
+              <Label text="First Name"/>
+              <TextField fx:id="txtFirstName"/>
           </HBox>
           <HBox>
-              <Label text="Bench activity"/>
-              <TextField fx:id="txtBenchActivity"/>
+              <Label text="Last Name"/>
+              <TextField fx:id="txtLastName"/>
           </HBox>
           <HBox>
-              <Label text="Date"/>
-              <DatePicker fx:id="dateOnBench"></DatePicker>
+              <Label text="Email"/>
+              <TextField fx:id="txtEmail"/>
           </HBox>
           <HBox>
-              <Button mnemonicParsing="false" text="Add record" onAction="#addEmployeeRecord" />
-              <Button mnemonicParsing="false" text="Cancel" onAction="#goHome" />
+              <Label text="Branch"/>
+              <TextField fx:id="txtBranch"/>
+          </HBox>
+          <HBox>
+              <Button mnemonicParsing="false" text="Add employee" onAction="#addEmployee" />
+              <Button mnemonicParsing="false" text="Cancel" onAction="#goToEmployee" />
           </HBox>
       </VBox>
   </center>

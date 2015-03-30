@@ -1,5 +1,7 @@
 package Models;
 
+import DAL.DatabaseOperations;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -66,10 +68,12 @@ public class BenchRecord {
     }
 
     public String getEmployeeName(int id){
-        Employee e = new Employee(1, "Tony", "Law", "Sydney", "blah@blah.com");
-        if (id == e.getEmployeeID())
-            return e.getFirstName() + " " + e.getLastName();
-        else
-            return "John Doe";
+        return DatabaseOperations.getEmployeeName(id);
+
+//        Employee e = new Employee("Tony", "Law", "Sydney", "blah@blah.com");
+//        if (id == e.getEmployeeID())
+//            return e.getFirstName() + " " + e.getLastName();
+//        else
+//            return "John Doe";
     }
 }

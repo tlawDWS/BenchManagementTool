@@ -21,6 +21,13 @@
     </top>
     <center>
       <VBox>
+          <GridPane fx:id="gpDateRange">
+              <Label fx:id="lblDateStart" GridPane.columnIndex="0" GridPane.rowIndex="0" text="Start Date" styleClass="header" />
+              <DatePicker fx:id="dateStart" GridPane.columnIndex="1" GridPane.rowIndex="0"></DatePicker>
+              <Label fx:id="lblDateEnd" GridPane.columnIndex="0" GridPane.rowIndex="1" text="End Date" styleClass="header" />
+              <DatePicker fx:id="dateEnd" GridPane.columnIndex="1" GridPane.rowIndex="1"></DatePicker>
+              <Button fx:id="btnSearchByDates" text="Search" onAction="#searchRecordsByDates" GridPane.rowIndex="2"></Button>
+          </GridPane>
           <GridPane fx:id="gpBenchRecords">
               <Label fx:id="lblEmployeeHeading" GridPane.columnIndex="0" text="Employee" styleClass="header" />
               <Label fx:id="lblBenchHours" GridPane.columnIndex="1" text="Bench Hours" styleClass="header"/>
@@ -28,7 +35,7 @@
               <Label fx:id="lblRecordDate" GridPane.columnIndex="3" text="Date" styleClass="header"/>
           </GridPane>
           <GridPane fx:id="gpMainMore">
-              <Button onAction="#goToAddBenchRecord" fx:id="btnAddRecord" text="Add" GridPane.columnIndex="0" />
+              <Button onAction="#goToAddBenchRecord" fx:id="btnAddRecord" text="Add new record" GridPane.columnIndex="0" />
           </GridPane>
       </VBox>
     </center>

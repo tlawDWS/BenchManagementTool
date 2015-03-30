@@ -4,6 +4,7 @@ import Constants.Constants;
 import DAL.DatabaseOperations;
 import Models.BenchRecord;
 import Models.Employee;
+import UI.ScreenFlow;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -55,16 +56,22 @@ public class AddBenchRecordController implements Initializable {
         int employeeID = employees.get(selectedComboBoxIndex).getEmployeeID();
         DatabaseOperations.addBenchRecord(new BenchRecord(employeeID, Date.from(dateOnBench.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()), txtBenchActivity.getText()));
 
-        Stage stage = (Stage)((Node)actionEvent.getTarget()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("BenchManagementTool.fxml"));
-        Scene scene = new Scene(root, Constants.SCENE_WIDTH, Constants.SCENE_HEIGHT);
-        stage.setScene(scene);
+        ScreenFlow.goToScene(root, actionEvent);
     }
 
     public void goHome(ActionEvent actionEvent) throws IOException {
-        Stage stage = (Stage)((Node)actionEvent.getTarget()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("BenchManagementTool.fxml"));
-        Scene scene = new Scene(root, Constants.SCENE_WIDTH, Constants.SCENE_HEIGHT);
-        stage.setScene(scene);
+        ScreenFlow.goToScene(root, actionEvent);
+    }
+
+    public void goToAddEmployee(ActionEvent actionEvent) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("AddEmployee.fxml"));
+            ScreenFlow.goToScene(root, actionEvent);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

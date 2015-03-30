@@ -2,6 +2,7 @@ package DAL;
 
 import Models.BenchRecord;
 import Models.Employee;
+import com.sun.org.apache.xpath.internal.functions.FuncFalse;
 
 import javax.swing.plaf.nimbus.State;
 import javax.xml.transform.Result;
@@ -27,27 +28,27 @@ public final class DatabaseOperations {
         }
     }
 
-    public static void getConnection() throws Exception {
-        Statement stmt = null;
-        String sql = "select * from TEST";
-        ResultSet set;
-        int id = 0;
-        String name = "";
-
-        Class.forName("org.h2.Driver");
-        Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "p@ssw0rd");
-
-        stmt = conn.createStatement();
-        set = stmt.executeQuery(sql);
-
-        while (set.next())
-        {
-            id = set.getInt("ID");
-            name = set.getString("NAME");
-        }
-
-        conn.close();
-    }
+//    public static void getConnection() throws Exception {
+//        Statement stmt = null;
+//        String sql = "select * from TEST";
+//        ResultSet set;
+//        int id = 0;
+//        String name = "";
+//
+//        Class.forName("org.h2.Driver");
+//        Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "p@ssw0rd");
+//
+//        stmt = conn.createStatement();
+//        set = stmt.executeQuery(sql);
+//
+//        while (set.next())
+//        {
+//            id = set.getInt("ID");
+//            name = set.getString("NAME");
+//        }
+//
+//        conn.close();
+//    }
 
     public static List<BenchRecord> getBenchRecords() throws SQLException, ClassNotFoundException {
         Statement stmt = null;
@@ -60,7 +61,6 @@ public final class DatabaseOperations {
 
         try {
             conn = openConnection();
-
             stmt = conn.createStatement();
             set = stmt.executeQuery(sql);
 
@@ -93,7 +93,6 @@ public final class DatabaseOperations {
         try
         {
             conn = openConnection();
-
             stmt = conn.createStatement();
             set = stmt.executeQuery(sql);
 
@@ -115,28 +114,20 @@ public final class DatabaseOperations {
     }
 
     public static void addBenchRecord(BenchRecord br) {
-    //public static void addBenchRecord() {
         PreparedStatement stmt = null;
-//        String sql = "INSERT INTO BENCHRECORD(EMPLOYEEID, DAILYSUMMARY, BENCHRECORDDATE) VALUES(" +
-//                br.getEmployeeID() + " , '" + br.getBenchActivity() + "', '" + br.getFormattedRecordDate() + "')";
-
         String sql = "INSERT INTO BENCHRECORD(EMPLOYEEID, DAILYSUMMARY, BENCHRECORDDATE) VALUES(?, ?, ?)";
         try {
-            try {
-                conn = openConnection();
-                stmt = conn.prepareStatement(sql);
-                stmt.setInt(1, br.getEmployeeID());
-                stmt.setString(2, br.getBenchActivity());
-                stmt.setString(3, br.getFormattedRecordDate());
-                //stmt.execute(sql);
-                stmt.executeUpdate();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        finally {
+            conn = openConnection();
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, br.getEmployeeID());
+            stmt.setString(2, br.getBenchActivity());
+            stmt.setString(3, br.getFormattedRecordDate());
+            stmt.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
             try {
                 closeConnection();
             } catch (SQLException e) {
@@ -145,4 +136,59 @@ public final class DatabaseOperations {
         }
     }
 
+    public static void addEmployee(Employee emp) {
+        PreparedStatement stmt = null;
+
+        String sql = "INSERT INTO EMPLOYEE(FIRSTNAME, LASTNAME, EMAIL, HASLEFTCOMPANY, BRANCH) VALUES(?, ?, ?, False, ?)";
+        try
+        {
+            conn = openConnection();
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, emp.getFirstName());
+            stmt.setString(2, emp.getLastName());
+            stmt.setString(3, emp.getEmail());
+            stmt.setString(4, emp.getBranch());
+            stmt.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                closeConnection();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static String getEmployeeName(int id) {
+        String fullName = "";
+        PreparedStatement stmt = null;
+        ResultSet set;
+        String sql = "SELECT FIRSTNAME, LASTNAME FROM EMPLOYEE WHERE ID = ?";
+
+        try {
+            conn = openConnection();
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+            set = stmt.executeQuery();
+
+            while (set.next()) {
+                fullName = set.getString("FIRSTNAME") + " " + set.getString("LASTNAME");
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                closeConnection();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return fullName;
+    }
 }

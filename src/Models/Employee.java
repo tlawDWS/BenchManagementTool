@@ -6,6 +6,7 @@ public class Employee {
     private String lastName;
     private String email;
     private String branch;
+    private Boolean hasLeftCompany;
 
     public Employee(int id, String firstName, String lastName, String branch, String email)
     {

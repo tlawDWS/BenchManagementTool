@@ -11,16 +11,8 @@
           <HBox>
               <Label text="Employee"/>
               <ComboBox fx:id="cbEmployees" ></ComboBox>
-              <Button fx:id="btnAddEmployee" text="Add new employee"></Button>
+              <Button fx:id="btnAddEmployee" text="Add new employee" onAction="#goToAddEmployee"></Button>
           </HBox>
-          <!--<HBox>-->
-              <!--<Label text="First name"/>-->
-              <!--<TextField fx:id="txtFirstName"/>-->
-          <!--</HBox>-->
-          <!--<HBox>-->
-              <!--<Label text="Last name"/>-->
-              <!--<TextField fx:id="txtLastName"/>-->
-          <!--</HBox>-->
           <HBox>
               <Label text="Bench activity"/>
               <TextField fx:id="txtBenchActivity"/>
